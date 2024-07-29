@@ -1,13 +1,14 @@
 <?php
 
 use App\Http\Controllers\Category\DeleteController;
+use App\Http\Controllers\Category\ShowController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('categories')->group(function () {
     // Route::get('/', 'Category\IndexController');
     // Route::post('/', 'Category\StoreController');
-    // Route::get('/{id}', 'Category\ShowController');
+    Route::get('/{id}', ShowController::class);
     // Route::put('/{id}', 'Category\UpdateController');
     Route::delete('/{id}', DeleteController::class);
 });
