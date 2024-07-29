@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\Category\IndexController;
+use App\Http\Controllers\Category\StoreController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('categories')->group(function () {
-    // Route::get('/', 'Category\IndexController');
-    // Route::post('/', 'Category\StoreController');
+    Route::get('/', IndexController::class);
+    Route::post('/', StoreController::class);
     // Route::get('/{id}', 'Category\ShowController');
     // Route::put('/{id}', 'Category\UpdateController');
     // Route::delete('/{id}', 'Category\DestroyController');
