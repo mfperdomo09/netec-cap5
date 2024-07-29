@@ -5,6 +5,9 @@ namespace App\Http\Feature;
 use Illuminate\Http\Request;
 use Illuminate\Bus\Queueable;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Queue\{SerializesModels, InteractsWithQueue};
 
 /**
@@ -43,5 +46,25 @@ class Feature
     public function getData()
     {
         return $this->data;
+    }
+
+    /**
+     * Generate a response.
+     *
+     * @param mixed $data
+     * @param int $status
+     * @return JsonResponse
+     */
+    public function response($data, int $status = 200): JsonResponse
+    {
+        if ($data instanceof JsonResource) {
+            return $data->response()->setStatusCode($status);
+        }
+
+        if ($data instanceof ResourceCollection) {
+            return $data->response()->setStatusCode($status);
+        }
+
+        return response()->json(['message' => $data], $status);
     }
 }
