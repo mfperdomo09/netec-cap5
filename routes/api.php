@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Category\DeleteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -8,7 +9,7 @@ Route::prefix('categories')->group(function () {
     // Route::post('/', 'Category\StoreController');
     // Route::get('/{id}', 'Category\ShowController');
     // Route::put('/{id}', 'Category\UpdateController');
-    // Route::delete('/{id}', 'Category\DestroyController');
+    Route::delete('/{id}', DeleteController::class);
 });
 
 Route::prefix('products')->group(function () {
