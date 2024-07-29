@@ -3,6 +3,18 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+Route::prefix('categories')->group(function () {
+    // Route::get('/', 'Category\IndexController');
+    // Route::post('/', 'Category\StoreController');
+    // Route::get('/{id}', 'Category\ShowController');
+    // Route::put('/{id}', 'Category\UpdateController');
+    // Route::delete('/{id}', 'Category\DestroyController');
+});
+
+Route::prefix('products')->group(function () {
+    // Route::get('/', 'Product\IndexController');
+    // Route::post('/', 'Product\StoreController');
+    // Route::get('/{id}', 'Product\ShowController');
+    // Route::put('/{id}', 'Product\UpdateController');
+    // Route::delete('/{id}', 'Product\DestroyController');
+});
