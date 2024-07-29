@@ -25,12 +25,23 @@ class Feature
     protected $request;
 
     /**
+     * @var array
+     */
+    protected $data;
+
+    /**
      * Feature constructor.
      *
      * @param Request $request
      */
-    public function __construct(Request $request = null)
+    public function __construct(Request $request = null, $data = [])
     {
         $this->request = $request;
+        $this->data = $data;
+    }
+
+    public function getData()
+    {
+        return $this->data;
     }
 }
