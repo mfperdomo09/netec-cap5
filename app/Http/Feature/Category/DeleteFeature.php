@@ -5,6 +5,7 @@ namespace App\Http\Feature\Category;
 use App\Http\Feature\Feature;
 use App\Models\Category;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpFoundation\Response;
 
 class DeleteFeature extends Feature
 {
@@ -17,7 +18,7 @@ class DeleteFeature extends Feature
             $category = Category::find($id);
 
             if (!$category) {
-                return $this->response('Category not found', 404);
+                return $this->response('Category not found', Response::HTTP_NOT_FOUND);
             }
 
             $category->delete();
