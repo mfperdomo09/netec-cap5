@@ -5,6 +5,7 @@ use App\Http\Feature\Feature;
 use App\Models\Category;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpFoundation\Response;
 
 class UpdateFeature extends Feature
 {
@@ -25,7 +26,7 @@ class UpdateFeature extends Feature
 
             DB::commit();
 
-            return response()->json($category, 200);
+            return $this->response($category, Response::HTTP_OK);
         } catch (Exception $e) {
             DB::rollBack();
             return $this->response($e->getMessage(), 500);

@@ -24,7 +24,7 @@ class DeleteFeature extends Feature
             $category->delete();
 
             DB::commit();
-            return $this->response('Category deleted successfully', 200);
+            return $this->response('Category deleted successfully', Response::HTTP_OK);
         } catch (\Exception $e) {
             DB::rollBack();
             return $this->response([

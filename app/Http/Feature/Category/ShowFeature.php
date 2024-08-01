@@ -4,6 +4,7 @@ namespace App\Http\Feature\Category;
 
 use App\Http\Feature\Feature;
 use App\Models\Category;
+use Symfony\Component\HttpFoundation\Response;
 
 class ShowFeature extends Feature
 {
@@ -13,9 +14,9 @@ class ShowFeature extends Feature
         $category = Category::find($id);
 
         if (!$category) {
-            return $this->response('Category not found', 404);
+            return $this->response('Category not found', Response::HTTP_NOT_FOUND);
         }
 
-        return response()->json($category, 200);
+        return $this->response($category, Response::HTTP_OK);
     }
 }
